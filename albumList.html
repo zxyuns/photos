@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>相册列表</title>
+		<link rel="stylesheet" href="css/userHome.css" />
+		<script type="text/javascript" src="js/jquery-1.11.2.min.js" ></script>
+	</head>
+	<body class="bodyHome">
+    	<!-- 头部 -->
+		<div class="head-top">
+			<div class="head-cent">
+				<h1>Tony的个人空间</h1>
+				<p>http:1793264418@qq.com</p>
+			</div>
+			<div class="head-nav">
+				<div class="head-cent" >
+                	<div class="head-img">
+                    	<a href="javascript:;">
+                        	<img src="img/userHome/psb.png">
+                        </a>
+                        <div class="uName">Mr.Tony</div>
+                    </div>
+                    <div class="nav-list">
+                    	<ul>
+                        	<li><a href="javascript:;">Tony</a></li>
+                        	<li><a href="javascript:;">Tony</a></li>
+                        	<li><a href="javascript:;">Tony</a></li>
+                        	<li><a href="javascript:;">Tony</a></li>
+                        </ul>
+                    </div>
+                </div>
+			</div> 
+		</div>
+		
+		<div id="albynList">
+			<div class="alist">
+				<ul>
+					<li>
+						<div class="photo">
+							<div class="photoImg">
+								<a href="javascript:;" datsrc="img/userHome/1.jpg">
+									<img src="img/userHome/1.jpg" />
+								</a>
+							</div>
+							<div class="photoInfor">
+								<span>美女</span>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="photo">
+							<div class="photoImg">
+								<a href="javascript:;" datsrc="img/userHome/2.jpg">
+									<img src="img/userHome/2.jpg" />
+								</a>
+							</div>
+							<div class="photoInfor">
+								<span>美女</span>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="photo">
+							<div class="photoImg">
+								<a href="javascript:;" datsrc="img/userHome/3.jpg">
+									<img src="img/userHome/3.jpg" />
+								</a>
+							</div>
+							<div class="photoInfor">
+								<span>美女</span>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="photo">
+							<div class="photoImg">
+								<a href="javascript:;" datsrc="img/userHome/4.jpg">
+									<img src="img/userHome/4.jpg" />
+								</a>
+							</div>
+							<div class="photoInfor">
+								<span>美女</span>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="photo">
+							<div class="photoImg">
+								<a href="javascript:;" datsrc="img/userHome/4.jpg">
+									<img src="img/userHome/4.jpg" />
+								</a>
+							</div>
+							<div class="photoInfor">
+								<span>美女</span>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="photo">
+							<div class="photoImg">
+								<a href="javascript:;" datsrc="img/userHome/4.jpg">
+									<img src="img/userHome/4.jpg" />
+								</a>
+							</div>
+							<div class="photoInfor">
+								<span>美女</span>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="photo">
+							<div class="photoImg">
+								<a href="javascript:;" datsrc="img/userHome/4.jpg">
+									<img src="img/userHome/4.jpg" />
+								</a>
+							</div>
+							<div class="photoInfor">
+								<span>美女</span>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="photo">
+							<div class="photoImg">
+								<a href="javascript:;" datsrc="img/userHome/4.jpg">
+									<img src="img/userHome/4.jpg" />
+								</a>
+							</div>
+							<div class="photoInfor">
+								<span>美女</span>
+							</div>
+						</div>
+					</li>
+
+					<li>
+						<div class="photo">
+							<div class="photoImg">
+								<a href="javascript:;" datsrc="img/userHome/4.jpg">
+									<img src="img/userHome/4.jpg" />
+								</a>
+							</div>
+							<div class="photoInfor">
+								<span>美女</span>
+							</div>
+						</div>
+					</li>
+					<div class="clear"></div>
+				</ul>
+				
+			</div>
+		</div>
+		<!--图片放大定位-->
+		<div id="AlbumListFx">
+			<div class="fex"></div>
+			<div id="ImgFex">
+				<input type="button" id="clearBtn" value="X" />
+				<a href="javascript:;" id="upBtn" >上一页</a>
+				<div id="Imgcent"><img src="" alt="" /></div>
+				<a href="javascript:;" id="nexBnt">下一页</a>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	$(function(){
+		
+		var index;
+		var imgurl;
+		var equr;
+		var len=$('.alist').find('li').length;
+
+		$(".photoImg a").bind('click', function(){
+			$('#AlbumListFx').fadeIn(500);
+			index = $(this).parents("li").index();
+			console.log(index);
+			imgurl=$(this).attr('datsrc');
+			console.log(imgurl);
+			$("#Imgcent").find('img').prop('src',imgurl);
+		})
+
+		// 点击外围也执行关闭
+		$('.fex').bind('click', function(){
+			$("#AlbumListFx").fadeOut(300);
+		})
+
+		// 下一页
+		$('#nexBnt').bind('click', function(){
+			index++;
+			if(index == len){index = 0;}   
+			equrl = $(".alist").find('li').eq(index).find('a').attr('datsrc');
+				$("#Imgcent").find('img').prop('src',equrl)
+		})
+
+		$('#upBtn').bind('click', function(){
+			index--;
+			if(index == -1){index = len - 1;} // == if(index < 0){index = len - 1;}   
+			equrl = $(".alist").find('li').eq(index).find('a').attr('datsrc');
+				$("#Imgcent").find('img').prop('src',equrl)
+		})
+	})
+</script>
+
+
