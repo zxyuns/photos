@@ -764,15 +764,15 @@ div,iframe,form,ul,li,dl,dt,dd,h1,h2,h3,h4,h5,h6{ margin: 0; padding: 0;}
 }
 #albynList .alist ul li .photo .photoImg{
 	width: 172px;
-	height: 130px;
+	/*height: 160px;*/
 	position:relative;
 }
 #albynList .alist ul li .photo .photoImg a{
 	display: block;
 }
 #albynList .alist ul li .photo .photoImg a img{
-	width: 172px;
-	height: 130px;
+	width: 100%;
+	height: auto;
 }
 #albynList .alist ul li .photo .photoInfor{
 	height: 20px;
